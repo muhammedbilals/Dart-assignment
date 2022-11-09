@@ -1,10 +1,41 @@
+import 'dart:io';
+
 void main(List<String> args) {
-  List<int> array1 = [1, 2, 3];
-  List<int> array2 = [4, 5, 6];
+  print('Enter the limit:');
+  var inputLimit = stdin.readLineSync();
+  int limit = int.parse(inputLimit!);
+  print('Enter the first array:');
+
+  List? array1 = List.filled(limit, null, growable: false);
+  List? array2 = List.filled(limit, null, growable: false);
+
+  for (int i = 0; i < limit; i++) {
+    var inputarray1 = stdin.readLineSync();
+    array1[i] = int.parse(inputarray1!);
+  }
+
+  print('Enter the Second array:');
+  for (int i = 0; i < limit; i++) {
+    var inputarray2 = stdin.readLineSync();
+    array2[i] = int.parse(inputarray2!);
+  }
+
+  int temp = 0;
+  for (int i = 0; i < limit; i++) {
+    temp = array1[i];
+    array1[i] = array2[i];
+    array2[i]  = temp;
+  }
+  print('\nswapped value of first array:');
+
+    for (int i = 0; i < limit; i++) {
+    stdout.write('${array1[i]}  ');
+  }
 
 
-  List<int> temp = [...array1]; // copy of aray1
-  List.remo
-  print(array1);
-  print(array2);
+    print('\nswapped value of second array:');
+
+    for (int i = 0; i < limit; i++) {
+    stdout.write('${array2[i]}  ');
+  }
 }
